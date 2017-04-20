@@ -9,8 +9,9 @@ namespace Adventure
 {
     [XmlRoot("Game"), Serializable]
     public class Game
-    {
-        [XmlElement("Rooms")]
-        public Rooms Rooms { get; set; }
+    { 
+        [XmlArray(ElementName = "Rooms")]
+        [XmlArrayItem(ElementName = "Room")]
+        public List<Room> Rooms { get; set; }
     }
 }

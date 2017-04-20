@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -15,7 +14,7 @@ namespace Adventure
             Game game = (Game)serializer.Deserialize(loadStream);
             loadStream.Close();
             
-            foreach (var room in game.Rooms.Room)
+            foreach (var room in game.Rooms)
             {
                 Debug.WriteLine(room.LongDescription);
             }
