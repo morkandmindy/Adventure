@@ -3,7 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace objectModel
+
+namespace Adventure
 {
     internal class Program
     {
@@ -13,22 +14,12 @@ namespace objectModel
             FileStream loadStream = new FileStream(@"..\..\sample.xml", FileMode.Open, FileAccess.Read);
             Game game = (Game)serializer.Deserialize(loadStream);
             loadStream.Close();
-
-            //    var r = new Room
-            //            {
-            //                Id = 1,
-            //                Passages = new List<Passage>
-            //                           {
-            //                               new Passage
-            //                               {
-            //                                   Direction = Directions.North,
-            //                                   LongDescription = "an oaken door",
-            //                                   Destination = 2
-            //                               }
-            //                           }
-            //            };
-
-
+            
+            foreach (var room in game.Rooms.Room)
+            {
+                Debug.WriteLine(room.LongDescription);
+            }
+            
             //    //suppose player said "OPEN DOOR"
             //    //first, recognizing KNOWNVERB-KNOWNOBJECT form,
             //    //second, checking for the object in Player.Room and Player.Inventory combined,

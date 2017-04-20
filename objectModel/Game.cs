@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace objectModel
+namespace Adventure
 {
     [XmlRoot("Game"), Serializable]
     public class Game

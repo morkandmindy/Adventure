@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace objectModel
+namespace Adventure
 {
     public interface IDescribable
     {

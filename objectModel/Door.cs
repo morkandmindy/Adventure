@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Xml.Serialization;
 
-namespace objectModel
+namespace Adventure
 {
     public class Door : IDescribable
     {

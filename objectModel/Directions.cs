@@ -1,4 +1,4 @@
-namespace objectModel
+namespace Adventure
 {
     public enum Directions
     {

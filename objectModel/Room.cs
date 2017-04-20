@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
-namespace objectModel
+namespace Adventure
 {
     public class Room : IDescribable
     {

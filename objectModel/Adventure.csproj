@@ -7,8 +7,8 @@
     <ProjectGuid>{AC0E741A-B167-4858-B98D-37EA2B634068}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>objectModel</RootNamespace>
-    <AssemblyName>objectModel</AssemblyName>
+    <RootNamespace>Adventure</RootNamespace>
+    <AssemblyName>Adventure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Adventure.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
