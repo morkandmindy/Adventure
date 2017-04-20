@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XmlSchema">
+	<Rooms>
+		<Room LongDescription="A big cave. There is a passage leading north." Id="1" />
+		<Room LongDescription="A small cave. There is a passage leading south." Id="2" />		
+		<Room LongDescription="Another small cave. There is a passage leading south." Id="3" />
+	</Rooms>
+</Game>
