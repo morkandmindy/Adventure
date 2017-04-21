@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Directions" type="Directions" />
+  <xs:simpleType name="Directions">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="North" />
+      <xs:enumeration value="South" />
+      <xs:enumeration value="East" />
+      <xs:enumeration value="West" />
+      <xs:enumeration value="Up" />
+      <xs:enumeration value="Down" />
+      <xs:enumeration value="NorthEast" />
+      <xs:enumeration value="NorthWest" />
+      <xs:enumeration value="SouthEast" />
+      <xs:enumeration value="SouthWest" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Door" nillable="true" type="Door" />
+  <xs:complexType name="Door">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkingKeys" type="Key" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LongDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Key">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="LongDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Game" nillable="true" type="Game" />
+  <xs:complexType name="Game">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Rooms" type="ArrayOfRoom" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfRoom">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Room" nillable="true" type="Room" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Room">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Passages" type="ArrayOfPassage" />
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:int" use="required" />
+    <xs:attribute name="LongDescription" type="xs:string" />
+    <xs:attribute name="ShortDescription" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="ArrayOfPassage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Passage" nillable="true" type="Passage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Passage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Door" type="Door" />
+    </xs:sequence>
+    <xs:attribute name="Direction" type="Directions" use="required" />
+    <xs:attribute name="Destination" type="xs:int" use="required" />
+    <xs:attribute name="LongDescription" type="xs:string" />
+    <xs:attribute name="ShortDescription" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="Key" nillable="true" type="Key" />
+  <xs:element name="Passage" nillable="true" type="Passage" />
+  <xs:element name="Room" nillable="true" type="Room" />
+</xs:schema>

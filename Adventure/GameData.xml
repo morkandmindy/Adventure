@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xsd="http://www.w3.org/2001/XmlSchema"
+xsi:schemaLocation="urn:GameData GameData.xsd"  >
+	<Rooms>
+    <Room Id="5" LongDescription="XSD-assisted XML editing in VS!" >
+      <Passages>
+        <Passage LongDescription="Should passages even have descriptions? The room should describe them" Direction="North"></Passage>
+
+      </Passages>
+    </Room>
+		<Room LongDescription="A big cave. There is a passage leading north." Id="1">
+			<Passages>
+				<Passage Direction="North" Destination = "2" />
+			</Passages>
+		</Room>
+		<Room LongDescription="A small cave. There is a passage leading south." Id="2">		
+			<Passages>
+				<Passage Direction="South" Destination = "1" />
+			</Passages>
+		</Room>
+		<Room LongDescription="Another small cave. There is a passage leading south." Id="3" />	
+		<Room LongDescription="Another small cave. There is a passage leading south." Id="4" />
+	</Rooms>
+</Game>

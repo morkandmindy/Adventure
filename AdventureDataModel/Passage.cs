@@ -4,15 +4,15 @@ namespace Adventure
 {
     public class Passage : IDescribable
     {
-        [XmlElement("Direction")]
+        [XmlAttribute("Direction")]
         public Directions Direction { get; set; }
-        [XmlElement("Destination")]
+        [XmlAttribute("Destination")]
         public int Destination { get; set; }
         [XmlElement("Door")]
         public Door Door { get; set; }
-        [XmlElement("LongDescription")]
+        [XmlAttribute("LongDescription")]
         public string LongDescription { get; set; }
-        [XmlElement("ShortDescription")]
+        [XmlAttribute("ShortDescription")]
         public string ShortDescription { get; set; }
     }
 }
