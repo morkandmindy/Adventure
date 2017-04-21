@@ -45,9 +45,11 @@
     <Compile Include="Game.cs" />
     <Compile Include="IDescribable.cs" />
     <Compile Include="Key.cs" />
+    <Compile Include="Nouns.cs" />
     <Compile Include="Passage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="Verbs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

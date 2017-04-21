@@ -3,7 +3,7 @@
   xmlns:xsd="http://www.w3.org/2001/XmlSchema"
   xsi:schemaLocation="urn:GameData GameData.xsd">
   <Rooms>
-    <Room LongDescription="You are in a big cavern. There are passages leading to the north and east." Id="1">
+    <Room LongDescription="You are in a large cavern. There are passages leading to the north and east." Id="1">
       <Passages>
         <Passage Direction="North" Destination="2" />
         <Passage Direction="East" Destination="3" />
@@ -15,7 +15,7 @@
         <Passage Direction="Down" Destination="5" />
       </Passages>
     </Room>
-    <Room LongDescription="You are in a long hallway stretching to the east and west." Id="3" >
+    <Room LongDescription="You are in a long stone hallway stretching to the east and west." Id="3" >
       <Passages>
         <Passage Direction="West" Destination="1" />
         <Passage Direction="East" Destination="4" />
