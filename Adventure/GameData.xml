@@ -1,25 +1,35 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <Game xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns:xsd="http://www.w3.org/2001/XmlSchema"
-xsi:schemaLocation="urn:GameData GameData.xsd"  >
-	<Rooms>
-    <Room Id="5" LongDescription="XSD-assisted XML editing in VS!" >
+  xmlns:xsd="http://www.w3.org/2001/XmlSchema"
+  xsi:schemaLocation="urn:GameData GameData.xsd">
+  <Rooms>
+    <Room LongDescription="You are in a big cavern. There are passages leading to the north and east." Id="1">
       <Passages>
-        <Passage LongDescription="Should passages even have descriptions? The room should describe them" Direction="North"></Passage>
-
+        <Passage Direction="North" Destination="2" />
+        <Passage Direction="East" Destination="3" />
       </Passages>
     </Room>
-		<Room LongDescription="A big cave. There is a passage leading north." Id="1">
-			<Passages>
-				<Passage Direction="North" Destination = "2" />
-			</Passages>
-		</Room>
-		<Room LongDescription="A small cave. There is a passage leading south." Id="2">		
-			<Passages>
-				<Passage Direction="South" Destination = "1" />
-			</Passages>
-		</Room>
-		<Room LongDescription="Another small cave. There is a passage leading south." Id="3" />	
-		<Room LongDescription="Another small cave. There is a passage leading south." Id="4" />
-	</Rooms>
+    <Room LongDescription="You are in a small cave with water dripping from the ceiling. There is a passage leading south and a difficult crawl down a pit." Id="2">
+      <Passages>
+        <Passage Direction="South" Destination="1" />
+        <Passage Direction="Down" Destination="5" />
+      </Passages>
+    </Room>
+    <Room LongDescription="You are in a long hallway stretching to the east and west." Id="3" >
+      <Passages>
+        <Passage Direction="West" Destination="1" />
+        <Passage Direction="East" Destination="4" />
+      </Passages>
+    </Room>
+    <Room LongDescription="You are in a beautifully carved chamber whose walls are solid marble. There is an exit to the west." Id="4" >
+      <Passages>
+        <Passage Direction="West" Destination="3" />
+      </Passages>
+    </Room>
+    <Room LongDescription="You are at the bottom of a damp pit. The only way out is up." Id="5" >
+      <Passages>
+        <Passage Direction="Up" Destination="2" />
+      </Passages>
+    </Room>
+  </Rooms>
 </Game>
