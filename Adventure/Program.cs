@@ -1,10 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Net.Sockets;
 using System.Xml.Serialization;
-
-using AdventureDataModel;
 
 namespace Adventure
 {
@@ -20,47 +17,73 @@ namespace Adventure
 
         private static void RunGame(Game game)
         {
+            OfferInstructions();
+
             int currRoomId = 1;
             while (true) //keep running until Ctrl+C
             {
                 Room currRoom = game.Rooms.FirstOrDefault(r => r.Id == currRoomId);
+                bool commandProcessed = false;
+                Command command = null;
 
-                ConsoleHelper.WriteLineWordWrap(currRoom.LongDescription);
-                Console.Write("> ");
-
-                Command cmd = new Command(Console.ReadLine().ToLower());
-
-                Console.WriteLine();
-
-                if (cmd.Direction != null && currRoom.Passages.Where(p => p.Direction == cmd.Direction).FirstOrDefault() != null)
+                if (currRoom != null)
                 {
-                    currRoomId = currRoom.Passages.Where(p => p.Direction == cmd.Direction).FirstOrDefault().Destination;
-                    
+                    ConsoleHelper.WriteLineWordWrap(currRoom.LongDescription);
+                    Console.Write("> ");
+
+                    var readLine = Console.ReadLine();
+                    if (readLine != null)
+                    {
+                        command = new Command(readLine.ToLower());
+
+                        Console.WriteLine();
+
+                        //process move
+                        if (command.Direction != null
+                            && currRoom.Passages.FirstOrDefault(p => p.Direction == command.Direction) != null)
+                        {
+                            var firstOrDefault = currRoom.Passages.FirstOrDefault(p => p.Direction == command.Direction);
+                            if (firstOrDefault != null)
+                            {
+                                currRoomId = firstOrDefault.Destination;
+                                commandProcessed = true;
+                            }
+                        }
+
+                    }
                 }
+                if (!commandProcessed)
+                {
+                    Console.WriteLine("Sorry, I don't know the word '" + command.Verb + "");
+                }
+                Console.WriteLine();
+            }
+        }
 
-                //bool commandHandled = false;
-                //Directions x;
-                //if (Directions.TryParse(command, true, out x))
-                //{
-                //    foreach (var passage in currRoom.Passages)
-                //    {
-                //        if (command == passage.Direction.ToString().ToLower())
-                //        {
-                //            currRoomId = passage.Destination;
-                //            commandHandled = true;
-                //        }
-                //    }
-                //    if (!commandHandled)
-                //    {
-                //        Console.WriteLine("You cannot move in that direction.");
-                //        commandHandled = true;
-                //    }
-                //}
-                //if (!commandHandled)
-                //{
-                //    Console.WriteLine("I did not recognize that command.");
-                //}
+        private static void OfferInstructions()
+        {
+            bool InstructionsHandled = false;
+            while (!InstructionsHandled)
+            {
+                Console.WriteLine("Welcome to Adventure!! Would you like instructions?");
 
+                Console.Write("> ");
+                var yesno = Console.ReadLine().ToLower();
+                if (yesno == "yes" || yesno == "y")
+                {
+                    ConsoleHelper.WriteLineWordWrap(
+                        @"Somewhere nearby is Colossal Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. Magic is said to work in the cave. I will be your eyes and hands. Direct me with commands of 1 or 2 words.");
+                    InstructionsHandled = true;
+                }
+                else if (yesno == "no" || yesno == "n")
+                {
+                    Console.WriteLine("OK.");
+                    InstructionsHandled = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please answer Yes or No.");
+                }
                 Console.WriteLine();
             }
         }
@@ -73,7 +96,5 @@ namespace Adventure
             loadStream.Close();
             return game;
         }
-
-        
     }
 }

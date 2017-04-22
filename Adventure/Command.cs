@@ -1,4 +1,6 @@
-﻿using AdventureDataModel;
+﻿using System;
+
+using AdventureDataModel;
 
 namespace Adventure
 {
@@ -14,13 +16,19 @@ namespace Adventure
                 noun = ReplaceAbbreviations(words[1].ToLower());
             }
 
+            Direction = ParseDirection(verb, noun);
+        }
+
+        private Directions? ParseDirection(string verb, string noun)
+        {
+            Directions? retval = null;
             if (verb == "go")
             {
                 if (IsDirection(noun))
                 {
                     Directions d;
                     Directions.TryParse(noun, out d);
-                    Direction = d;
+                    retval = d;
                 }
                 else
                 {
@@ -31,8 +39,9 @@ namespace Adventure
             {
                 Directions d;
                 Directions.TryParse(verb, true, out d);
-                Direction = d;
+                retval = d;
             }
+            return retval;
         }
 
         public Verbs? Verb { get; set; }
@@ -64,53 +73,53 @@ namespace Adventure
             {
                 case "n":
                     {
-                        command = "north";
+                        command = "North";
                         break;
                     }
 
                 case "s":
                     {
-                        command = "south";
+                        command = "South";
                         break;
                     }
                 case "e":
                     {
-                        command = "east";
+                        command = "East";
                         break;
                     }
                 case "w":
                     {
-                        command = "west";
+                        command = "West";
                         break;
                     }
                 case "ne":
                     {
-                        command = "northeast";
+                        command = "NorthEast";
                         break;
                     }
                 case "nw":
                     {
-                        command = "northwest";
+                        command = "NorthWest";
                         break;
                     }
                 case "se":
                     {
-                        command = "southeast";
+                        command = "SouthEast";
                         break;
                     }
                 case "sw":
                     {
-                        command = "southwest";
+                        command = "SouthWest";
                         break;
                     }
                 case "u":
                     {
-                        command = "up";
+                        command = "Up";
                         break;
                     }
                 case "d":
                     {
-                        command = "down";
+                        command = "Down";
                         break;
                     }
             }
