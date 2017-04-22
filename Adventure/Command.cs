@@ -7,10 +7,11 @@ namespace Adventure
         public Command(string val)
         {
             string[] words = val.Split(' ');
-            string verb = words[0].ToLower();
+            string verb = ReplaceAbbreviations(words[0].ToLower());
+            string noun = string.Empty;
             if (words.Length == 2)
             {
-                string noun = words[1].ToLower();
+                noun = ReplaceAbbreviations(words[1].ToLower());
             }
 
             if (verb == "go")
@@ -29,14 +30,14 @@ namespace Adventure
             else if (IsDirection(verb))
             {
                 Directions d;
-                Directions.TryParse(noun, out d);
+                Directions.TryParse(verb, true, out d);
                 Direction = d;
             }
         }
 
-        public Verbs Verb { get; set; }
-        public Nouns Noun { get; set; }
-        public Directions Direction { get; set; }
+        public Verbs? Verb { get; set; }
+        public Nouns? Noun { get; set; }
+        public Directions? Direction { get; set; }
 
 
         private bool IsDirection(string val)
@@ -55,6 +56,65 @@ namespace Adventure
         {
             Verbs v;
             return Verbs.TryParse(val, true, out v);
+        }
+
+        private static string ReplaceAbbreviations(string command)
+        {
+            switch (command)
+            {
+                case "n":
+                    {
+                        command = "north";
+                        break;
+                    }
+
+                case "s":
+                    {
+                        command = "south";
+                        break;
+                    }
+                case "e":
+                    {
+                        command = "east";
+                        break;
+                    }
+                case "w":
+                    {
+                        command = "west";
+                        break;
+                    }
+                case "ne":
+                    {
+                        command = "northeast";
+                        break;
+                    }
+                case "nw":
+                    {
+                        command = "northwest";
+                        break;
+                    }
+                case "se":
+                    {
+                        command = "southeast";
+                        break;
+                    }
+                case "sw":
+                    {
+                        command = "southwest";
+                        break;
+                    }
+                case "u":
+                    {
+                        command = "up";
+                        break;
+                    }
+                case "d":
+                    {
+                        command = "down";
+                        break;
+                    }
+            }
+            return command;
         }
     }
 }

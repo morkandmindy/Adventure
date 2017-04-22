@@ -32,6 +32,12 @@ namespace Adventure
 
                 Console.WriteLine();
 
+                if (cmd.Direction != null && currRoom.Passages.Where(p => p.Direction == cmd.Direction).FirstOrDefault() != null)
+                {
+                    currRoomId = currRoom.Passages.Where(p => p.Direction == cmd.Direction).FirstOrDefault().Destination;
+                    
+                }
+
                 //bool commandHandled = false;
                 //Directions x;
                 //if (Directions.TryParse(command, true, out x))
@@ -68,63 +74,6 @@ namespace Adventure
             return game;
         }
 
-        private static string ReplaceAbbreviations(string command)
-        {
-            switch (command)
-            {
-                case "n":
-                {
-                    command = "north";
-                    break;
-                }
-
-                case "s":
-                {
-                    command = "south";
-                    break;
-                }
-                case "e":
-                {
-                    command = "east";
-                    break;
-                }
-                case "w":
-                {
-                    command = "west";
-                    break;
-                }
-                case "ne":
-                {
-                    command = "northeast";
-                    break;
-                }
-                case "nw":
-                {
-                    command = "northwest";
-                    break;
-                }
-                case "se":
-                {
-                    command = "southeast";
-                    break;
-                }
-                case "sw":
-                {
-                    command = "southwest";
-                    break;
-                }
-                case "u":
-                {
-                    command = "up";
-                    break;
-                }
-                case "d":
-                {
-                    command = "down";
-                    break;
-                }
-            }
-            return command;
-        }
+        
     }
 }
