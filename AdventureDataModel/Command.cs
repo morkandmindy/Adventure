@@ -19,6 +19,7 @@ namespace AdventureDataModel
             }
 
             Direction = ParseDirection(verb, noun);
+            Verb = ParseVerb(verb);
         }
 
         private Directions? ParseDirection(string verb, string noun)
@@ -44,6 +45,18 @@ namespace AdventureDataModel
                 retval = d;
             }
             return retval;
+        }
+
+        private Verbs? ParseVerb(string verb)
+        {
+            Verbs? retVal = null;
+            if (IsVerb(verb))
+            {
+                Verbs v;
+                Verbs.TryParse(verb, true, out v );
+                retVal = v;
+            }
+            return retVal;
         }
 
         public Verbs? Verb { get; set; }

@@ -9,6 +9,7 @@ namespace AdventureDataModel
     public enum Verbs
     {
         Use,
-        Go
+        Go,
+        Quit
     }
 }
