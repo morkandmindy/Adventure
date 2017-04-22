@@ -1,8 +1,10 @@
 ﻿using System;
 
+using Adventure;
+
 using AdventureDataModel;
 
-namespace Adventure
+namespace AdventureDataModel
 {
     class Command
     {
@@ -32,7 +34,7 @@ namespace Adventure
                 }
                 else
                 {
-                    //throw exception with message handing back the user's input
+                    //TODO: throw exception with message handing back the user's input
                 }
             }
             else if (IsDirection(verb))
