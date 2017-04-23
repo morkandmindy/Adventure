@@ -12,7 +12,11 @@ namespace Adventure
     {
         public string ReadLine()
         {
-            return Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("> ");
+            var retVal = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+            return retVal;
         }
 
         public void Write(string value)

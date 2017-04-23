@@ -32,7 +32,6 @@ namespace Adventure
             while (_gameRunning)
             {
                 _console.WriteLine(_currRoom.LongDescription);
-                _console.Write("> ");
                 var userInput = _console.ReadLine();
                 _console.WriteLine();
 
@@ -135,7 +134,6 @@ namespace Adventure
             bool answer = false;
             while (!answered)
             {
-                _console.Write("> ");
                 var yesno = _console.ReadLine().ToLower();
                 if (yesno == "yes" || yesno == "y")
                 {
