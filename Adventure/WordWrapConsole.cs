@@ -6,10 +6,32 @@ using System.Threading.Tasks;
 
 using AdventureDataModel;
 
+    using System.Diagnostics;
+    using System.Runtime.InteropServices;
+
 namespace Adventure
 {
-    class WordWrapConsole : IConsole
+class WordWrapConsole : IConsole
     {
+        public WordWrapConsole()
+        {
+            Maximize();
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.Clear();
+            Console.CursorVisible = true;   //why can't I see the cursor then?! WHY? WHYY??!!
+            
+        }
+
+    [DllImport("user32.dll")]
+    public static extern bool ShowWindow(System.IntPtr hWnd, int cmdShow);
+
+    private static void Maximize()
+    {
+        Process p = Process.GetCurrentProcess();
+        ShowWindow(p.MainWindowHandle, 3); //SW_MAXIMIZE = 3
+    }
+    
         public string ReadLine()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
