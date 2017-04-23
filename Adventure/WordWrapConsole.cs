@@ -14,13 +14,12 @@ namespace Adventure
 class WordWrapConsole : IConsole
     {
         public WordWrapConsole()
-        {
-            Maximize();
+        {            
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.Clear();
             Console.CursorVisible = true;   //why can't I see the cursor then?! WHY? WHYY??!!
-            
+            Console.Clear();
+            Maximize();
         }
 
     [DllImport("user32.dll")]
