@@ -76,6 +76,7 @@ namespace Adventure
                 else
                 {
                     _console.WriteLine("There is no way to go in that direction.");
+                    _console.WriteLine();
                     commandProcessed = true;
                 }
             }
@@ -88,10 +89,10 @@ namespace Adventure
             if (command.Verb == Verbs.Quit)
             {
                 _console.WriteLine("Do you really want to quit now?");
+                commandProcessed = true;
                 if (AskYesNo())
                 {
                     _gameRunning = false;
-                    commandProcessed = true;
                 }
             }
             return commandProcessed;
