@@ -88,9 +88,11 @@ namespace Adventure
             if (command.Verb == Verbs.Quit)
             {
                 _console.WriteLine("Do you really want to quit now?");
-                //TODO: extract the Y/N input logic from OfferInstructions for reuse here.
-                _gameRunning = false;
-                commandProcessed = true;
+                if (AskYesNo())
+                {
+                    _gameRunning = false;
+                    commandProcessed = true;
+                }
             }
             return commandProcessed;
         }
@@ -108,22 +110,41 @@ namespace Adventure
 
         private void OfferInstructions()
         {
-            bool instructionsHandled = false;
-            while (!instructionsHandled)
+            bool done = false;
+            while (!done)
             {
                 _console.WriteLine("Welcome to Adventure!! Would you like instructions?");
+                if(AskYesNo())
+                {
+                    _console.WriteLine(@"Somewhere nearby is Colossal Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. Magic is said to work in the cave. I will be your eyes and hands. Direct me with commands of 1 or 2 words.");
+                    done = true;
+                }
+                else
+                {
+                    _console.WriteLine("OK.");
+                    done = true;
+                }
+                _console.WriteLine();
+            }
+        }
+
+        private bool AskYesNo()
+        {
+            bool answered = false;
+            bool answer = false;
+            while (!answered)
+            {
                 _console.Write("> ");
                 var yesno = _console.ReadLine().ToLower();
                 if (yesno == "yes" || yesno == "y")
                 {
-                    _console.WriteLine(
-                        @"Somewhere nearby is Colossal Cave, where others have found fortunes in treasure and gold, though it is rumored that some who enter are never seen again. Magic is said to work in the cave. I will be your eyes and hands. Direct me with commands of 1 or 2 words.");
-                    instructionsHandled = true;
+                    answered = true;
+                    answer = true;
                 }
                 else if (yesno == "no" || yesno == "n")
                 {
-                    _console.WriteLine("OK.");
-                    instructionsHandled = true;
+                    answered = true;
+                    answer = false;
                 }
                 else
                 {
@@ -131,6 +152,10 @@ namespace Adventure
                 }
                 _console.WriteLine();
             }
+
+            return answer;
         }
     }
 }
+
+
