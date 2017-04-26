@@ -17,17 +17,9 @@
   </xs:simpleType>
   <xs:element name="Door" nillable="true" type="Door" />
   <xs:complexType name="Door">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="WorkingKeys" type="Key" />
-      <xs:element minOccurs="0" maxOccurs="1" name="LongDescription" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="Key">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="LongDescription" type="xs:string" />
-      <xs:element minOccurs="0" maxOccurs="1" name="ShortDescription" type="xs:string" />
-    </xs:sequence>
+    <xs:attribute name="KeyId" type="xs:int" use="required" />
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="Description" type="xs:string" />
   </xs:complexType>
   <xs:element name="Game" nillable="true" type="Game" />
   <xs:complexType name="Game">
@@ -45,8 +37,8 @@
       <xs:element minOccurs="0" maxOccurs="1" name="Passages" type="ArrayOfPassage" />
     </xs:sequence>
     <xs:attribute name="Id" type="xs:int" use="required" />
-    <xs:attribute name="LongDescription" type="xs:string" />
-    <xs:attribute name="ShortDescription" type="xs:string" />
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="Description" type="xs:string" />
   </xs:complexType>
   <xs:complexType name="ArrayOfPassage">
     <xs:sequence>
@@ -59,10 +51,26 @@
     </xs:sequence>
     <xs:attribute name="Direction" type="Directions" use="required" />
     <xs:attribute name="Destination" type="xs:int" use="required" />
-    <xs:attribute name="LongDescription" type="xs:string" />
-    <xs:attribute name="ShortDescription" type="xs:string" />
   </xs:complexType>
   <xs:element name="Key" nillable="true" type="Key" />
+  <xs:complexType name="Key">
+    <xs:attribute name="Name" type="xs:string" />
+    <xs:attribute name="Description" type="xs:string" />
+  </xs:complexType>
+  <xs:element name="Nouns" type="Nouns" />
+  <xs:simpleType name="Nouns">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="key" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:element name="Passage" nillable="true" type="Passage" />
   <xs:element name="Room" nillable="true" type="Room" />
+  <xs:element name="Verbs" type="Verbs" />
+  <xs:simpleType name="Verbs">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Use" />
+      <xs:enumeration value="Go" />
+      <xs:enumeration value="Quit" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

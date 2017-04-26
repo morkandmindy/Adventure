@@ -1,8 +1,8 @@
 ﻿using System.Xml.Serialization;
 
-namespace Adventure
+namespace AdventureDataModel
 {
-    public class Passage : IDescribable
+    public class Passage
     {
         [XmlAttribute("Direction")]
         public Directions Direction { get; set; }
@@ -10,9 +10,5 @@ namespace Adventure
         public int Destination { get; set; }
         [XmlElement("Door")]
         public Door Door { get; set; }
-        [XmlAttribute("LongDescription")]
-        public string LongDescription { get; set; }
-        [XmlAttribute("ShortDescription")]
-        public string ShortDescription { get; set; }
     }
 }

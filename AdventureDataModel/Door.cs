@@ -2,22 +2,15 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Xml.Serialization;
 
-namespace Adventure
+namespace AdventureDataModel
 {
     public class Door : IDescribable
     {
-        [XmlElement("WorkingKeys")]
-        public List<Key> WorkingKeys { get; set; }
-        [XmlElement("LongDescription")]
-        public string LongDescription { get; set; }
-        [XmlElement("ShortDescription")]
-        public string ShortDescription { get; set; }
-
-        public bool Unlock(object player)
-            //IPlayer should be supplied by Unity
-            //Door examines the player (and his inventory) to see if it will unlock
-        {
-            return true;
-        }
+        [XmlAttribute("KeyId")]
+        public int KeyId { get; set; }
+        [XmlAttribute("Name")]
+        public string Name { get; set; }
+        [XmlAttribute("Description")]
+        public string Description { get; set; }
     }
 }

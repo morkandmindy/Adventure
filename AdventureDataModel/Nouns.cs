@@ -8,5 +8,6 @@ namespace AdventureDataModel
 {
     public enum Nouns
     {
+        key
     }
 }

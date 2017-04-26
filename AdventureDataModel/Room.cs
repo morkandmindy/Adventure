@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
-
-namespace Adventure
+namespace AdventureDataModel
 {
     public class Room : IDescribable
     {
@@ -14,10 +13,10 @@ namespace Adventure
         [XmlAttribute("Id")]
         public int Id { get; set; }
 
-        [XmlAttribute("LongDescription")]
-        public string LongDescription { get; set; }
+        [XmlAttribute("Name")]
+        public string Name { get; set; }
+        [XmlAttribute("Description")]
+        public string Description { get; set; }
 
-        [XmlAttribute("ShortDescription")]
-        public string ShortDescription { get; set; }
     }
 }

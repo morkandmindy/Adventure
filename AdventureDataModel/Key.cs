@@ -1,12 +1,13 @@
 ﻿using System.Xml.Serialization;
 
-namespace Adventure
+namespace AdventureDataModel
 {
     public class Key : IDescribable
     {
-        [XmlElement("LongDescription")]
-        public string LongDescription { get; set; }
-        [XmlElement("ShortDescription")]
-        public string ShortDescription { get; set; }
+        [XmlAttribute("Name")]
+        public string Name { get; set; }
+
+        [XmlAttribute("Description")]
+        public string Description { get; set; }
     }
 }

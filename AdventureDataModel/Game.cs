@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Serialization;
 
-using AdventureDataModel;
-
-namespace Adventure
+namespace AdventureDataModel
 {
     [XmlRoot("Game"), Serializable]
     public class Game
@@ -31,7 +29,7 @@ namespace Adventure
 
             while (_gameRunning)
             {
-                _console.WriteLine(_currRoom.LongDescription);
+                _console.WriteLine(_currRoom.Description);
                 var userInput = _console.ReadLine();
                 _console.WriteLine();
 
