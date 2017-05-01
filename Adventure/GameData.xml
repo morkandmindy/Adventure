@@ -37,9 +37,6 @@
       <Passages>
         <Passage Direction="Up" Destination="2"/>
       </Passages>
-      <Items>
-        
-      </Items>
     </Room>
   </Rooms>
 </Game>

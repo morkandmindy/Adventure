@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net.Configuration;
 using System.Xml.Serialization;
 using AdventureDataModel;
@@ -11,11 +12,16 @@ namespace Adventure
         {
 
             var cmd = new Cmd("this,that,theother one,two,three|red,green up,down|xyzzy pig,sow|alpha beta|xyzzy");
-            bool huh = cmd.Matches("that two");
-            //Directions x;
-            //bool huh2 = cmd.Matches("get ?", out x);
+            var userInput = "that two";
+            bool huh = cmd.Matches(userInput);
+            
+            var cmd2 = new Cmd("go ?|?", new Directions());
+            userInput = "go south";
+            var huh2 = cmd2.Matches(userInput);
+            //which direction was contained in userInput?
 
-
+            
+             
 
 
             var game = LoadGame(@"..\..\GameData.xml");
